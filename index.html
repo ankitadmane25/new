@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Dancing Script', cursive;
+      background: linear-gradient(to bottom, #1a1a40, #4b306a);
+      color: #ffe6f0;
+      overflow-x: hidden;
+      text-align: center;
+    }
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: transparent url('https://raw.githubusercontent.com/Klerith/starry-night/main/src/images/stars.svg') repeat;
+      z-index: -1;
+      animation: moveStars 60s linear infinite;
+    }
+    @keyframes moveStars {
+      from { background-position: 0 0; }
+      to { background-position: -10000px 5000px; }
+    }
+    .intro {
+      font-size: 2rem;
+      margin-top: 3rem;
+      padding: 0 1rem;
+      animation: typing 4s steps(40, end), blink .75s step-end infinite;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #b30059;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #b30059; }
+    }
+    h1 {
+      font-size: 3rem;
+      margin-top: 2rem;
+    }
+    p {
+      font-size: 1.4rem;
+      margin: 1rem 0;
+    }
+    .quote-fader {
+      margin: 2rem auto;
+      font-size: 1.4rem;
+      font-style: italic;
+      max-width: 600px;
+      animation: fadeQuotes 16s infinite;
+    }
+    @keyframes fadeQuotes {
+      0%, 100% { opacity: 0; }
+      20%, 80% { opacity: 1; }
+    }
+    .reasons {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .reason-card {
+      background: #fff0f5;
+      color: #5e2c2c;
+      padding: 1.2rem;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      font-size: 1.2rem;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: zoomIn 1s ease;
+    }
+    .reason-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .proposal {
+      margin-top: 3rem;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffb6c1;
+      animation: heartbeat 1.5s infinite;
+    }
+    .buttons {
+      margin-top: 2rem;
+    }
+    button {
+      font-size: 1.2rem;
+      padding: 0.8rem 1.5rem;
+      margin: 0.5rem;
+      border: none;
+      border-radius: 30px;
+      background: #ff69b4;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #ff1493;
+    }
+    .secret-letter {
+      margin-top: 3rem;
+    }
+    .letter-box {
+      display: none;
+      margin-top: 1rem;
+      background: #fffafc;
+      color: #333;
+      padding: 1.5rem;
+      border-radius: 15px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.2rem;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="intro">This isn’t just a website... It’s a piece of my heart 💖</div>
+
+  <h1>Hi Poojie ❤️</h1>
+  <p>I built this little website because there’s something I’ve been meaning to say...</p>
+  <p>You’re an amazing person — kind, smart, beautiful — and I feel lucky just knowing you.</p>
+
+  <div class="quote-fader" id="quote"></div>
+
+  
+  <div class="proposal">Will you be mine? 💖</div>
+
+  <div class="buttons">
+    <button onclick="showConfetti(); showFinalMessage();">Yes, I feel the same</button>
+    <button onclick="alert('Take your time — I’m glad I could tell you. 😊')">Let’s talk about it</button>
+    <button onclick="alert('I understand — you’ll always be special to me. 🤍')">Just friends</button>
+  </div>
+
+  <div class="secret-letter">
+    <button onclick="document.getElementById('letter').style.display='block'">💌 Click here to read what I’ve never said before…</button>
+    <div id="letter" class="letter-box">
+      Every time I see you, my heart skips a beat. I’ve admired you in silence for so long, wondering if you feel the same. This site — every word and animation — was created to express something my lips couldn’t say out loud. I like you, truly… deeply. I hope this reaches your heart. ❤️
+    </div>
+  </div>
+
+  <script>
+    // Floating quotes
+    const quotes = [
+    
+    ];
+    let quoteIndex = 0;
+    const quoteDiv = document.getElementById('quote');
+    function changeQuote() {
+      quoteDiv.innerText = quotes[quoteIndex];
+      quoteIndex = (quoteIndex + 1) % quotes.length;
+    }
+    setInterval(changeQuote, 4000);
+    changeQuote();
+
+    function showConfetti() {
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.width = '8px';
+        confetti.style.height = '8px';
+        confetti.style.backgroundColor = ['#ff69b4', '#ff1493', '#ffc0cb'][Math.floor(Math.random()*3)];
+        confetti.style.position = 'fixed';
+        confetti.style.top = '-10px';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.animation = `confetti-fall ${Math.random()*2 + 2}s ease-in forwards`;
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 4000);
+      }
+    }
+
+    function showFinalMessage() {
+      setTimeout(() => alert("You just made my world more beautiful. I’ll cherish you — forever. 💫"), 500);
+    }
+  </script>
+</body>
+</html>
